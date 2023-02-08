@@ -7,28 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-    <?php if(count($listings) > 0) {?> 
-        <p>listings found </p>
-    
-    <h1> {{$heading}} </h1>
-        <?php
-            foreach($listings as $list) {
-                ?>
-                <div>
-                <?php echo $list['id'];?>
-                </div>
+    @if (count($listings) == 0)
+    <p> No listings found</p>
+    @endif
+    @if (count($listings) <= 10)
+    <p> less then 10 listings found</p>
+    @endif
+    @if (count($listings) >= 10)
+    <p> more then 10 listings found</p>
+    @endif
+        @php echo $heading; @endphp
+        @foreach ($listings as $listing) 
+            <div>
+                <a href="/listings/{{$listing['id']}}">{{$listing['title']}}</a>
                 <br>
-                <div>
-                <?php echo $list['title'];?>
-                </div>
+
                 <br>
-                <div>
-                <?php echo $list['descripiton'];?>
-                </div>
+                <p>{{$listing['text']}}</p>
                 <br>
-                <?php
-                }
-            }
-        ?>
-</body>
+            </div>
+        @endforeach
+    </body>
 </html>
