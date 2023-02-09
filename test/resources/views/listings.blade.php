@@ -16,12 +16,11 @@
     @if (count($listings) >= 10)
     <p> more then 10 listings found</p>
     @endif
-        @php echo $heading; @endphp
         @foreach ($listings as $listing) 
             <div>
                 <a href="/listings/{{$listing['id']}}">{{$listing['title']}}</a>
                 <br>
-
+                    {{$listing['id']}}
                 <br>
                 <p>{{$listing['text']}}</p>
                 <br>
